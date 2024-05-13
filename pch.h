@@ -1,7 +1,3 @@
-//
-// pch.h
-//
-
 #pragma once
 #include <iostream>
 #include <fstream>
@@ -16,19 +12,19 @@ class Set
     int position;
 public:
     Set();
-    Set(T arr_); // з параметром
+    Set(T arr_); // Г§ ГЇГ Г°Г Г¬ГҐГІГ°Г®Г¬
     Set(const Set& S);
     ~Set();
     Set operator = (const Set& S);
-    void add(T x); // додаєм елемент .
-    void remove(T x); // вилучаєм елемент
-    void clear(); // Очищуєм весь масив
-    bool Check(T x); // Перевірка наявності елемента в множині
-    int set_size(); //Розмір множини
-    Set union_(Set& S); //Обєднання множин
-    Set intersect(Set& S); // Перетин множин
-    Set difference(Set& S); // Різниця двох множин
-    void print(ostream& os); // вивід в потік
+    void add(T x); // Г¤Г®Г¤Г ВєГ¬ ГҐГ«ГҐГ¬ГҐГ­ГІ .
+    void remove(T x); // ГўГЁГ«ГіГ·Г ВєГ¬ ГҐГ«ГҐГ¬ГҐГ­ГІ
+    void clear(); // ГЋГ·ГЁГ№ГіВєГ¬ ГўГҐГ±Гј Г¬Г Г±ГЁГў
+    bool Check(T x); // ГЏГҐГ°ГҐГўВіГ°ГЄГ  Г­Г ГїГўГ­Г®Г±ГІВі ГҐГ«ГҐГ¬ГҐГ­ГІГ  Гў Г¬Г­Г®Г¦ГЁГ­Ві
+    int set_size(); //ГђГ®Г§Г¬ВіГ° Г¬Г­Г®Г¦ГЁГ­ГЁ
+    Set union_(Set& S); //ГЋГЎВєГ¤Г­Г Г­Г­Гї Г¬Г­Г®Г¦ГЁГ­
+    Set intersect(Set& S); // ГЏГҐГ°ГҐГІГЁГ­ Г¬Г­Г®Г¦ГЁГ­
+    Set difference(Set& S); // ГђВіГ§Г­ГЁГ¶Гї Г¤ГўГ®Гµ Г¬Г­Г®Г¦ГЁГ­
+    void print(ostream& os); // ГўГЁГўВіГ¤ Гў ГЇГ®ГІВіГЄ
 
 
 };
@@ -51,10 +47,10 @@ Set<T>::~Set()
 template<typename T>
 Set<T>::Set(const Set& S)
 {
-    position = S.position; // зберігаєм кількість елементів у поточній множині такою ж як у множині S
+    position = S.position; // Г§ГЎГҐГ°ВіГЈГ ВєГ¬ ГЄВіГ«ГјГЄВіГ±ГІГј ГҐГ«ГҐГ¬ГҐГ­ГІВіГў Гі ГЇГ®ГІГ®Г·Г­ВіГ© Г¬Г­Г®Г¦ГЁГ­Ві ГІГ ГЄГ®Гѕ Г¦ ГїГЄ Гі Г¬Г­Г®Г¦ГЁГ­Ві S
     for (int i = 0; i < S.position; ++i)
     {
-        arr[i] = S.arr[i]; // копіює елементи з масиву arr множини S до масиву arr поточної множини.
+        arr[i] = S.arr[i]; // ГЄГ®ГЇВіГѕВє ГҐГ«ГҐГ¬ГҐГ­ГІГЁ Г§ Г¬Г Г±ГЁГўГі arr Г¬Г­Г®Г¦ГЁГ­ГЁ S Г¤Г® Г¬Г Г±ГЁГўГі arr ГЇГ®ГІГ®Г·Г­Г®Вї Г¬Г­Г®Г¦ГЁГ­ГЁ.
     }
 }
 
@@ -62,9 +58,9 @@ template<typename T>
 Set<T>::Set(T arr_)
 {
     position = 0;
-    for (int i = 0; i < size_t; ++i)  // Він копіює елементи з arr_ в arr множини до тих пір,
-        // поки не зустріне нульове значення в arr_ або не заповниться максимальна кількість елементів у arr.
-        // Кожен непорожній елемент arr_ додається до множини, і змінна position збільшується на одиницю.
+    for (int i = 0; i < size_t; ++i)  // Г‚ВіГ­ ГЄГ®ГЇВіГѕВє ГҐГ«ГҐГ¬ГҐГ­ГІГЁ Г§ arr_ Гў arr Г¬Г­Г®Г¦ГЁГ­ГЁ Г¤Г® ГІГЁГµ ГЇВіГ°,
+        // ГЇГ®ГЄГЁ Г­ГҐ Г§ГіГ±ГІГ°ВіГ­ГҐ Г­ГіГ«ГјГ®ГўГҐ Г§Г­Г Г·ГҐГ­Г­Гї Гў arr_ Г ГЎГ® Г­ГҐ Г§Г ГЇГ®ГўГ­ГЁГІГјГ±Гї Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г  ГЄВіГ«ГјГЄВіГ±ГІГј ГҐГ«ГҐГ¬ГҐГ­ГІВіГў Гі arr.
+        // ГЉГ®Г¦ГҐГ­ Г­ГҐГЇГ®Г°Г®Г¦Г­ВіГ© ГҐГ«ГҐГ¬ГҐГ­ГІ arr_ Г¤Г®Г¤Г ВєГІГјГ±Гї Г¤Г® Г¬Г­Г®Г¦ГЁГ­ГЁ, Ві Г§Г¬ВіГ­Г­Г  position Г§ГЎВіГ«ГјГёГіВєГІГјГ±Гї Г­Г  Г®Г¤ГЁГ­ГЁГ¶Гѕ.
     {
         if (arr_[i] == 0)
         {
@@ -85,7 +81,7 @@ Set<T>::Set()
     position = 0;
 }
 template<typename T>
-void Set<T>::add(T x) // додаєм елемент .
+void Set<T>::add(T x) // Г¤Г®Г¤Г ВєГ¬ ГҐГ«ГҐГ¬ГҐГ­ГІ .
 {
     if (position != size_t - 1)
     {
@@ -116,7 +112,7 @@ void Set<T>::add(T x) // додаєм елемент .
 }
 
 template<typename T>
-void Set<T>::remove(T x) // вилучаєм елемент
+void Set<T>::remove(T x) // ГўГЁГ«ГіГ·Г ВєГ¬ ГҐГ«ГҐГ¬ГҐГ­ГІ
 {
     for (int i = 0; i < position; ++i)
     {
@@ -132,7 +128,7 @@ void Set<T>::remove(T x) // вилучаєм елемент
     position--;
 }
 template<typename T>
-void Set<T>::clear() // Очищуєм весь масив
+void Set<T>::clear() // ГЋГ·ГЁГ№ГіВєГ¬ ГўГҐГ±Гј Г¬Г Г±ГЁГў
 {
     for (int i = 0; i < position; ++i)
     {
@@ -140,7 +136,7 @@ void Set<T>::clear() // Очищуєм весь масив
     }
 }
 template<typename T>
-bool Set<T>::Check(T x) // Перевірка наявності елемента в множині
+bool Set<T>::Check(T x) // ГЏГҐГ°ГҐГўВіГ°ГЄГ  Г­Г ГїГўГ­Г®Г±ГІВі ГҐГ«ГҐГ¬ГҐГ­ГІГ  Гў Г¬Г­Г®Г¦ГЁГ­Ві
 {
     bool check = false;
     for (int i = 0; i < position; ++i)
@@ -154,12 +150,12 @@ bool Set<T>::Check(T x) // Перевірка наявності елемента в множині
     return check;
 }
 template<typename T>
-int Set<T>::set_size() //Розмір множини
+int Set<T>::set_size() //ГђГ®Г§Г¬ВіГ° Г¬Г­Г®Г¦ГЁГ­ГЁ
 {
-    return position;  // повертає кількість елементів які вже є в множині
+    return position;  // ГЇГ®ГўГҐГ°ГІГ Вє ГЄВіГ«ГјГЄВіГ±ГІГј ГҐГ«ГҐГ¬ГҐГ­ГІВіГў ГїГЄВі ГўГ¦ГҐ Вє Гў Г¬Г­Г®Г¦ГЁГ­Ві
 }
 template<typename T>
-Set<T> Set<T>::union_(Set& S) //Обєднання множин
+Set<T> Set<T>::union_(Set& S) //ГЋГЎВєГ¤Г­Г Г­Г­Гї Г¬Г­Г®Г¦ГЁГ­
 {
     Set un = S;
     for (int i = 0; i < position; ++i)
@@ -176,7 +172,7 @@ Set<T> Set<T>::union_(Set& S) //Обєднання множин
     return un;
 }
 template<typename T>
-Set<T> Set<T>::intersect(Set& S) // Перетин множин
+Set<T> Set<T>::intersect(Set& S) // ГЏГҐГ°ГҐГІГЁГ­ Г¬Г­Г®Г¦ГЁГ­
 {
     Set in;
     for (int i = 0; i < position; ++i)
@@ -198,7 +194,7 @@ Set<T> Set<T>::intersect(Set& S) // Перетин множин
 
 
 template<typename T>
-Set<T> Set<T>::difference(Set& S) // Різниця двох множин
+Set<T> Set<T>::difference(Set& S) // ГђВіГ§Г­ГЁГ¶Гї Г¤ГўГ®Гµ Г¬Г­Г®Г¦ГЁГ­
 {
     Set dif;
     for (int i = 0; i < position; ++i)
@@ -225,7 +221,7 @@ Set<T> Set<T>::difference(Set& S) // Різниця двох множин
     return dif;
 }
 template<typename T>
-void Set<T>::print(ostream& os) // вивід в потік
+void Set<T>::print(ostream& os) // ГўГЁГўВіГ¤ Гў ГЇГ®ГІВіГЄ
 {
     for (int i = 0; i < position; ++i)
     {
